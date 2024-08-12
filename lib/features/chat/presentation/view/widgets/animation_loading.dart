@@ -1,5 +1,5 @@
 import 'package:chat_gpt/core/theme/app_colors.dart';
-import 'package:chat_gpt/features/home/presentation/view/widgets/custom_circle_avatar.dart';
+import 'package:chat_gpt/features/chat/presentation/view/widgets/custom_circle_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 

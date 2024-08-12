@@ -1,5 +1,5 @@
 import 'package:chat_gpt/core/utils/app_styles.dart';
-import 'package:chat_gpt/features/home/presentation/view/widgets/gradient_text.dart';
+import 'package:chat_gpt/features/chat/presentation/view/widgets/gradient_text.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeText extends StatelessWidget {

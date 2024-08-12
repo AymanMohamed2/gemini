@@ -1,7 +1,7 @@
-import 'package:chat_gpt/features/home/presentation/view/widgets/animation_loading.dart';
-import 'package:chat_gpt/features/home/presentation/view/widgets/message_item.dart';
-import 'package:chat_gpt/features/home/presentation/view/widgets/no_messages_widget.dart';
-import 'package:chat_gpt/features/home/presentation/view_model/send_message_cubit/send_message_cubit.dart';
+import 'package:chat_gpt/features/chat/presentation/view/widgets/animation_loading.dart';
+import 'package:chat_gpt/features/chat/presentation/view/widgets/message_item.dart';
+import 'package:chat_gpt/features/chat/presentation/view/widgets/no_messages_widget.dart';
+import 'package:chat_gpt/features/chat/presentation/view_model/send_message_cubit/send_message_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

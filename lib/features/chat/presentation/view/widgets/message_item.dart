@@ -1,6 +1,6 @@
 import 'package:chat_gpt/core/theme/app_colors.dart';
 import 'package:chat_gpt/core/utils/app_styles.dart';
-import 'package:chat_gpt/features/home/domain/entities/message_entity.dart';
+import 'package:chat_gpt/features/chat/domain/entities/message_entity.dart';
 import 'package:flutter/material.dart';
 
 class MessageItem extends StatelessWidget {

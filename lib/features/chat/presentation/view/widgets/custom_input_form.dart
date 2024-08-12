@@ -1,6 +1,6 @@
 import 'package:chat_gpt/core/widgets/custom_text_form_field.dart';
-import 'package:chat_gpt/features/home/data/models/send_message_request_model/send_message_request_model.dart';
-import 'package:chat_gpt/features/home/presentation/view_model/send_message_cubit/send_message_cubit.dart';
+import 'package:chat_gpt/features/chat/data/models/send_message_request_model/send_message_request_model.dart';
+import 'package:chat_gpt/features/chat/presentation/view_model/send_message_cubit/send_message_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
@@ -30,7 +30,7 @@ class _CustomInputFormState extends State<CustomInputForm> {
         return Form(
           key: formKey,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 8),
             child: CustomTextFormField(
               onChanged: (value) {
                 setState(() {});
