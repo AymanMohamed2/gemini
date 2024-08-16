@@ -16,7 +16,6 @@ class TextToSpeechService {
   Future<void> speak(String text) async {
     String language = await _detectLanguage(text);
     await _flutterTts.setLanguage(language);
-
     await _flutterTts.speak(text);
     await _flutterTts.awaitSpeakCompletion(true);
   }
