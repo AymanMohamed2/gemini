@@ -1,5 +1,4 @@
 import 'package:chat_gpt/core/utils/assets.dart';
-import 'package:chat_gpt/features/chat/presentation/view/home_view.dart';
 import 'package:chat_gpt/features/home/presentation/view/home_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';

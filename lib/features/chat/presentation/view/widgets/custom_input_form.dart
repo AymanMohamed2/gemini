@@ -1,9 +1,12 @@
+import 'package:chat_gpt/core/services/speech_to_text/stt_service.dart';
+import 'package:chat_gpt/core/utils/service_locator.dart';
 import 'package:chat_gpt/core/widgets/custom_text_form_field.dart';
-import 'package:chat_gpt/features/chat/data/models/send_message_request_model/send_message_request_model.dart';
+import 'package:chat_gpt/core/models/send_message_request_model/send_message_request_model.dart';
 import 'package:chat_gpt/features/chat/presentation/view_model/send_message_cubit/send_message_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
+import 'package:speech_to_text/speech_to_text.dart';
 
 class CustomInputForm extends StatefulWidget {
   const CustomInputForm({
@@ -62,18 +65,18 @@ class _CustomInputFormState extends State<CustomInputForm> {
     if (textController.text.isNotEmpty) {
       await sendMessage(context);
     } else {
-      bool isInitialized = await speechToText.initialize();
+      getIt.get<SpeechToTextService>().listen(onResult: (result) {
+        textController.text = result.recognizedWords;
+        if (!getIt.get<SpeechToText>().isListening) {
+          setState(() {});
+        }
+      });
 
-      if (isInitialized) {
-        await speechToText.listen(
-          onResult: (result) {
-            textController.text = result.recognizedWords;
-            if (!speechToText.isListening) {
-              setState(() {});
-            }
-          },
-        );
-      }
+      // if (isInitialized) {
+      //   await speechToText.listen(
+      //     onResult: (result) {},
+      //   );
+      // }
     }
   }
 

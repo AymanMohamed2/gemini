@@ -1,4 +1,4 @@
-import 'package:chat_gpt/features/chat/domain/entities/message_entity.dart';
+import 'package:chat_gpt/core/entities/message_entity.dart';
 
 import 'candidate.dart';
 import 'usage_metadata.dart';
