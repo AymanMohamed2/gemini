@@ -8,8 +8,10 @@ class AnimatedMic extends StatelessWidget {
     this.onLongPress,
     required this.child,
     this.onTap,
+    this.color,
   });
 
+  final Color? color;
   final Widget child;
   final bool isAnimated;
   final void Function()? onLongPress;
@@ -31,6 +33,7 @@ class AnimatedMic extends StatelessWidget {
           onTap: onTap,
           onLongPress: onLongPress,
           child: CircleAvatar(
+            backgroundColor: color,
             radius: 30,
             child: Center(
               child: child,

@@ -1,3 +1,4 @@
+import 'package:chat_gpt/core/theme/app_colors.dart';
 import 'package:chat_gpt/features/recorder/presentation/view/widgets/animated_mic.dart';
 import 'package:chat_gpt/features/recorder/presentation/view_model/cubit/ask_your_question_cubit.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,7 @@ class AnimatedMicBlocBuilder extends StatelessWidget {
     return BlocBuilder<AskYourQuestionCubit, AskYourQuestionState>(
       builder: (context, state) {
         return AnimatedMic(
+          color: state is AskYourQuestionLoading ? AppColors.darkGrey : null,
           onTap: state is AskYourQuestionSpeaking
               ? () {
                   BlocProvider.of<AskYourQuestionCubit>(context).stop();
