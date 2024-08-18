@@ -1,4 +1,4 @@
-import 'package:speech_to_text/speech_recognition_result.dart';
+import 'dart:async';
 import 'package:speech_to_text/speech_to_text.dart';
 
 class SpeechToTextService {
@@ -10,13 +10,34 @@ class SpeechToTextService {
     return await speechToText.initialize();
   }
 
-  Future<void> listen(
-      {required Function(SpeechRecognitionResult)? onResult}) async {
-    if (await _initialize()) {
-      await speechToText.listen(
-          onResult: onResult,
-          localeId: speechToText.hasError ? 'en-US' : 'ar-EG');
+  Future<String?> listen() async {
+    if (!await _initialize()) {
+      return null;
     }
+    final completer = Completer<String?>();
+    bool isListening = false;
+    // Start listening
+    await speechToText.listen(
+      onResult: (result) {
+        isListening = true;
+        if (result.finalResult) {
+          isListening = false;
+          completer.complete(result.recognizedWords);
+        }
+      },
+      localeId: speechToText.hasError ? 'en-US' : 'ar-EG',
+    );
+    const timeoutDuration = Duration(seconds: 3);
+    Timer(timeoutDuration, () {
+      if (!completer.isCompleted) {
+        if (!isListening) {
+          speechToText.stop();
+          completer.complete(null);
+        }
+      }
+    });
+
+    return completer.future;
   }
 
   bool isNotListening() {

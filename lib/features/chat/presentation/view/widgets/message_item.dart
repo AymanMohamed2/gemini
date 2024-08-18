@@ -24,10 +24,10 @@ class MessageItem extends StatelessWidget {
           padding: const EdgeInsets.all(15),
           decoration: ShapeDecoration(
             color: message.isUserMessage
-                ? AppColors.lightGrey
+                ? AppColors.lightGrey.withOpacity(0.85)
                 : AppColors.darkGrey,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(17),
             ),
           ),
           child: Text(

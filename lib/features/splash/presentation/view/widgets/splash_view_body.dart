@@ -1,7 +1,7 @@
 import 'package:chat_gpt/core/utils/assets.dart';
 import 'package:chat_gpt/features/home/presentation/view/home_view.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:lottie/lottie.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -53,10 +53,13 @@ class _SplashViewBodyState extends State<SplashViewBody>
             builder: (context, _) {
               return Opacity(
                 opacity: rotationAnimation.value,
-                child: SizedBox(
-                  height: 100,
-                  child: SvgPicture.asset(
-                    Assets.logo,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: Lottie.asset(
+                      Assets.lottieSplash,
+                    ),
                   ),
                 ),
               );

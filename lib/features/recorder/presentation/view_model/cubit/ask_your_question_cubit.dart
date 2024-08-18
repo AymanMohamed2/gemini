@@ -21,17 +21,11 @@ class AskYourQuestionCubit extends Cubit<AskYourQuestionState> {
   Future<void> startRecording() async {
     emit(AskYourQuestionRecording());
 
-    await speechToTextService.listen(onResult: (result) async {
-      if (result.finalResult) {
-        onCanceled = true;
-        await askYourQuestion(question: result.recognizedWords);
-      }
-      onCanceled = false;
-    });
-    if (onCanceled == false) {
-      await Future.delayed(const Duration(seconds: 5), () async {
-        emit(AskYourQuestionInitial());
-      });
+    String? text = await speechToTextService.listen();
+    if (text != null) {
+      await askYourQuestion(question: text);
+    } else {
+      emit(AskYourQuestionInitial());
     }
   }
 
@@ -50,9 +44,10 @@ class AskYourQuestionCubit extends Cubit<AskYourQuestionState> {
   Future<void> speak(String text) async {
     emit(AskYourQuestionSpeaking());
     await textToSpeechService.speak(text);
-    await Future.delayed(const Duration(milliseconds: 200), () async {
-      emit(AskYourQuestionInitial());
-    });
+    await Future.delayed(
+      const Duration(milliseconds: 100),
+    );
+    emit(AskYourQuestionInitial());
   }
 
   Future<void> stop() async {
