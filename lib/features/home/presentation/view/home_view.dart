@@ -1,7 +1,9 @@
 import 'package:chat_gpt/core/theme/app_colors.dart';
+import 'package:chat_gpt/core/utils/service_locator.dart';
 import 'package:chat_gpt/features/chat/presentation/view/home_view.dart';
 import 'package:chat_gpt/features/recorder/presentation/view/recorder_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 class HomeView extends StatefulWidget {
   static const routeName = 'home';
@@ -19,10 +21,13 @@ class _HomeViewState extends State<HomeView> {
     RecorderView()
   ];
 
-  void _onItemTapped(int index) {
+  void _onItemTapped(int index) async {
     setState(() {
       _selectedIndex = index;
     });
+    if (index != 1) {
+      await getIt.get<FlutterTts>().stop();
+    }
   }
 
   @override

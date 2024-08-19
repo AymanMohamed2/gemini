@@ -1,19 +1,20 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:chat_gpt/core/entities/message_entity.dart';
 import 'package:chat_gpt/core/models/send_message_request_model/send_message_request_model.dart';
-import 'package:chat_gpt/core/services/speech_to_text/stt_service.dart';
+import 'package:chat_gpt/core/services/stt_service.dart';
 import 'package:chat_gpt/core/utils/service_locator.dart';
 import 'package:chat_gpt/features/chat/domain/usecases/send_message_use_case.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
-import 'package:speech_to_text/speech_to_text.dart';
-
 part 'send_message_state.dart';
 
 class SendMessageCubit extends Cubit<SendMessageState> {
   SendMessageCubit(this.sendMessageUseCase) : super(SendMessageInitial());
   final SendMessageUseCase sendMessageUseCase;
   List<MessageEntity> messages = [];
+  bool isListening = false;
 
   Future<void> sendMessage(
       {required SendMessageRequestModel sendMessageRequestModel}) async {
@@ -38,14 +39,28 @@ class SendMessageCubit extends Cubit<SendMessageState> {
   Future<void> recordText(BuildContext context,
       {required TextEditingController textController}) async {
     emit(SendMessageRecording());
-    String? text = await getIt.get<SpeechToTextService>().listen();
+    await getIt.get<SpeechToTextService>().listen(
+      onResult: (result) {
+        isListening = true;
 
-    if (text != null) {
-      textController.text = text;
-      if (!getIt.get<SpeechToText>().isListening) {
+        if (result.finalResult) {
+          textController.text = result.recognizedWords;
+          isListening = false;
+          emit(SendMessageInitial());
+        }
+      },
+    );
+
+    await Future.delayed(const Duration(seconds: 4), () {
+      if (!isListening) {
         emit(SendMessageInitial());
       }
-    }
-    emit(SendMessageInitial());
+    });
+  }
+
+  @override
+  void onChange(Change<SendMessageState> change) {
+    log(change.nextState.toString());
+    super.onChange(change);
   }
 }

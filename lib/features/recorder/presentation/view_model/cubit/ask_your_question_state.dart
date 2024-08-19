@@ -11,13 +11,6 @@ final class AskYourQuestionInitial extends AskYourQuestionState {}
 
 final class AskYourQuestionLoading extends AskYourQuestionState {}
 
-final class AskYourQuestionSuccess extends AskYourQuestionState {
-  final MessageEntity message;
+final class AskYourQuestionSuccess extends AskYourQuestionState {}
 
-  AskYourQuestionSuccess(this.message);
-}
-
-final class AskYourQuestionFailure extends AskYourQuestionState {
-  final String message;
-  AskYourQuestionFailure({required this.message});
-}
+final class AskYourQuestionFailure extends AskYourQuestionState {}

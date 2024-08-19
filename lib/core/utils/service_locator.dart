@@ -1,8 +1,8 @@
 import 'package:chat_gpt/core/network/api_service.dart';
 import 'package:chat_gpt/core/network/dio_service.dart';
-import 'package:chat_gpt/core/services/gemini_services/gemini_services.dart';
-import 'package:chat_gpt/core/services/speech_to_text/stt_service.dart';
-import 'package:chat_gpt/core/services/text_to_speach/text_to_speech_service.dart';
+import 'package:chat_gpt/core/services/gemini_services.dart';
+import 'package:chat_gpt/core/services/stt_service.dart';
+import 'package:chat_gpt/core/services/text_to_speech_service.dart';
 import 'package:chat_gpt/features/chat/data/datasources/base_home_data_source.dart';
 import 'package:chat_gpt/features/chat/data/datasources/remote_data_source.dart';
 import 'package:chat_gpt/features/chat/data/repository/home_repo_impl.dart';

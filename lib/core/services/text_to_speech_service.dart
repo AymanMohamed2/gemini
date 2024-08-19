@@ -7,7 +7,7 @@ class TextToSpeechService {
   Future<String> _detectLanguage(String text) async {
     final arabicRegex = RegExp(r'[\u0600-\u06FF]+');
     if (arabicRegex.hasMatch(text)) {
-      return "ar";
+      return "ar-EG";
     } else {
       return "en-US";
     }
@@ -16,8 +16,9 @@ class TextToSpeechService {
   Future<void> speak(String text) async {
     String language = await _detectLanguage(text);
     await _flutterTts.setLanguage(language);
-    await _flutterTts.speak(text);
     await _flutterTts.awaitSpeakCompletion(true);
+    await _flutterTts.speak(text);
+    await _flutterTts.stop();
   }
 
   Future<void> stop() async {
