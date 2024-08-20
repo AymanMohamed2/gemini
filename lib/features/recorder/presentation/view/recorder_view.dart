@@ -1,3 +1,4 @@
+import 'package:chat_gpt/core/services/connectivity_service.dart';
 import 'package:chat_gpt/core/services/stt_service.dart';
 import 'package:chat_gpt/core/services/text_to_speech_service.dart';
 import 'package:chat_gpt/core/utils/service_locator.dart';
@@ -17,6 +18,7 @@ class RecorderView extends StatelessWidget {
         getIt.get<AskYourQuestionUsecase>(),
         getIt.get<TextToSpeechService>(),
         getIt.get<SpeechToTextService>(),
+        getIt.get<ConnectivityService>(),
       ),
       child: const Scaffold(
         body: RecorderViewBody(),

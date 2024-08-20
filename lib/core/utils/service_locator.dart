@@ -1,5 +1,6 @@
 import 'package:chat_gpt/core/network/api_service.dart';
 import 'package:chat_gpt/core/network/dio_service.dart';
+import 'package:chat_gpt/core/services/connectivity_service.dart';
 import 'package:chat_gpt/core/services/gemini_services.dart';
 import 'package:chat_gpt/core/services/stt_service.dart';
 import 'package:chat_gpt/core/services/text_to_speech_service.dart';
@@ -13,6 +14,7 @@ import 'package:chat_gpt/features/recorder/data/datasources/recorder_remote_data
 import 'package:chat_gpt/features/recorder/data/repository/recorder_repository_impl.dart';
 import 'package:chat_gpt/features/recorder/domain/repository/recorder_repo.dart';
 import 'package:chat_gpt/features/recorder/domain/usecases/ask_your_question_usecase.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get_it/get_it.dart';
@@ -41,9 +43,11 @@ class ServiceLocator {
         RecorderRepositoryImpl(getIt.get<BaseRecorderDataSource>()));
     getIt.registerSingleton<AskYourQuestionUsecase>(
         AskYourQuestionUsecase(getIt.get<RecoderRepository>()));
-
     getIt.registerSingleton<FlutterTts>(FlutterTts());
     getIt.registerSingleton<TextToSpeechService>(
         TextToSpeechService(getIt.get<FlutterTts>()));
+    getIt.registerSingleton<Connectivity>(Connectivity());
+    getIt.registerSingleton<ConnectivityService>(
+        ConnectivityService(getIt.get<Connectivity>(), getIt.get<Dio>()));
   }
 }

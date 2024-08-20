@@ -1,4 +1,3 @@
-import 'package:chat_gpt/core/network/api_constance.dart';
 import 'package:chat_gpt/core/network/api_service.dart';
 import 'package:dio/dio.dart';
 
@@ -13,9 +12,9 @@ class DioService extends ApiService {
   }
 
   @override
-  Future<Map<String, dynamic>> get(String url) {
-    // TODO: implement get
-    throw UnimplementedError();
+  Future<Map<String, dynamic>> get(String url) async {
+    final result = await dio.get(url);
+    return result.data;
   }
 
   @override
@@ -26,11 +25,10 @@ class DioService extends ApiService {
 
   @override
   Future<Map<String, dynamic>> post(
-      {required String endPoint,
+      {required String url,
       required Map<String, dynamic> body,
       Map<String, dynamic>? headers}) async {
-    final response = await dio.post(
-        "${ApiConstance.baseUrl + endPoint}?key=${ApiConstance.apiKey}",
+    final response = await dio.post(url,
         data: body,
         options:
             Options(headers: headers ?? {"Content-Type": "application/json"}));
