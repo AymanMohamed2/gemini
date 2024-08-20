@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:chat_gpt/core/entities/message_entity.dart';
 import 'package:chat_gpt/core/models/send_message_request_model/send_message_request_model.dart';
@@ -7,7 +8,6 @@ import 'package:chat_gpt/core/services/stt_service.dart';
 import 'package:chat_gpt/core/utils/service_locator.dart';
 import 'package:chat_gpt/features/chat/domain/usecases/send_message_use_case.dart';
 import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
 part 'send_message_state.dart';
 
 class SendMessageCubit extends Cubit<SendMessageState> {

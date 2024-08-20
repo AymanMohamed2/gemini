@@ -1,11 +1,13 @@
 import 'dart:developer';
 
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:chat_gpt/core/models/send_message_request_model/send_message_request_model.dart';
 import 'package:chat_gpt/core/services/connectivity_service.dart';
 import 'package:chat_gpt/core/services/stt_service.dart';
 import 'package:chat_gpt/core/services/text_to_speech_service.dart';
 import 'package:chat_gpt/features/recorder/domain/usecases/ask_your_question_usecase.dart';
+// ignore: depend_on_referenced_packages
 import 'package:meta/meta.dart';
 
 part 'ask_your_question_state.dart';

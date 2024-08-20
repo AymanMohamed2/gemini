@@ -1,10 +1,6 @@
-import 'package:chat_gpt/core/network/dio_service.dart';
-import 'package:chat_gpt/core/services/connectivity_service.dart';
 import 'package:chat_gpt/core/widgets/custom_text_form_field.dart';
 import 'package:chat_gpt/core/models/send_message_request_model/send_message_request_model.dart';
 import 'package:chat_gpt/features/chat/presentation/view_model/send_message_cubit/send_message_cubit.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
@@ -61,9 +57,9 @@ class _CustomInputFormState extends State<CustomInputForm> {
                           if (widget.textController.text.isNotEmpty) {
                             await sendMessage(context);
                           } else {
-                            print(await ConnectivityService(
-                                    Connectivity(), Dio())
-                                .ifHasAnInternet());
+                            await BlocProvider.of<SendMessageCubit>(context)
+                                .recordText(context,
+                                    textController: widget.textController);
                           }
                         },
                   child: widget.textController.text.isNotEmpty

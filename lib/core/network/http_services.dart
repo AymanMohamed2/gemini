@@ -5,13 +5,11 @@ class HttpServices extends ApiService {
   http.Client client = http.Client();
   @override
   Future<Map<String, dynamic>> delete(String url) {
-    // TODO: implement delete
     throw UnimplementedError();
   }
 
   @override
   Future<Map<String, dynamic>> get(String url) {
-    // TODO: implement get
     throw UnimplementedError();
   }
 
@@ -20,13 +18,11 @@ class HttpServices extends ApiService {
       {required String url,
       required Map<String, dynamic> body,
       Map<String, dynamic>? headers}) {
-    // TODO: implement post
     throw UnimplementedError();
   }
 
   @override
   Future<Map<String, dynamic>> put(String url, Map<String, dynamic> body) {
-    // TODO: implement put
     throw UnimplementedError();
   }
 }

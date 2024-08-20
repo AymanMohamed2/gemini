@@ -20,7 +20,7 @@ class HomeRepoImpl extends HomeRepository {
       return Right(result);
     } on Exception catch (e) {
       if (e is DioException) {
-        print(e.toString());
+      
         return left(ServerFailure.fromDioException(e));
       } else {
         return left(ServerFailure(e.toString()));

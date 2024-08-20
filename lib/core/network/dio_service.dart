@@ -7,7 +7,6 @@ class DioService extends ApiService {
   DioService(this.dio);
   @override
   Future<Map<String, dynamic>> delete(String url) {
-    // TODO: implement delete
     throw UnimplementedError();
   }
 
@@ -19,7 +18,6 @@ class DioService extends ApiService {
 
   @override
   Future<Map<String, dynamic>> put(String url, Map<String, dynamic> body) {
-    // TODO: implement put
     throw UnimplementedError();
   }
 
