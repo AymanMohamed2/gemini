@@ -1,5 +1,5 @@
 import 'package:chat_gpt/core/utils/assets.dart';
-import 'package:chat_gpt/features/recorder/presentation/view/widgets/in_active_gemini..dart';
+import 'package:chat_gpt/features/recorder/presentation/view/widgets/in_active_gemini.dart';
 import 'package:chat_gpt/features/recorder/presentation/view_model/cubit/ask_your_question_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
